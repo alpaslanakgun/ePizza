@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RazorPay.Core" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ePizza.Data\ePizza.Data.csproj" />
+    <ProjectReference Include="..\ePizza.Repositories\ePizza.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,48 @@
+============ Items Details ====================================================
+Veggie Paradise	
+The awesome foursome! Golden corn, black olives, capsicum, red paprika	
+499.00	
+veggie_pizza.webp
+
+Cheese & Corn	
+A delectable combination of sweet & juicy golden corn	
+399.00	
+cheese_n_corn.webp
+
+Non Veg Delight	
+Chicken sausage, pepper barbecue chicken & peri-peri chicken in a fresh pan crust	
+499.00	noveg_delight.webp
+
+Non Veg Supreme
+Loaded with a delicious creamy tomato pasta topping, pepper chicken, capsicum	
+599.00	
+nonveg_supreme.webp
+
+Choco Lava Cake	
+Chocolate lovers delight! Indulgent, gooey molten lava inside chocolate cake	
+99.00	choco_lava.webp
+
+Butterscotch Cake	
+Sweet temptation! Butterscotch flavored mousse	
+99.00	
+butter_scotch.webp
+
+Red Lava Cake
+truly indulgent experience with sweet and rich red cake	
+99.00	
+red_cake.webp
+
+Pepsi	
+Sparkling and Refreshing Beverage	
+99.00	
+pepsi.webp
+
+Mirinda	
+Delicious Orange Flavoured beverage	
+99.00	
+mirinda.webp
+
+7 Up	
+Refreshing clear drink with lemon flavor	
+99.00	
+7up.webp

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ePizza.WebUI</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+   
+    @await Html.PartialAsync("_LayoutCssPartial")
+    @await RenderSectionAsync("Styles",false);
+ 
+</head>
+<body>
+    
+<partial name="_Header" />
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+<partial name="_Footer" />
+
+<footer class="border-top footer text-muted">
+    <div class="col-md-12 text-center">
+        Copyright © @DateTime.Now.Year | All rights reserved | This website is made with <i class="bi bi-heart" aria-hidden="true"></i> by <a href="https://epizza.com" target="_blank">www.ePizza.com</a>
+    </div>
+
+</footer>
+
+
+    @await Html.PartialAsync("_LayoutJsPartial");
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

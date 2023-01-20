@@ -1,0 +1,93 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.17" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ePizza.Entities\ePizza.Entities.csproj" />
+    <ProjectReference Include="..\ePizza.Services\ePizza.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\lib\bootstrap\" />
+    <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
+    <Folder Include="wwwroot\lib\jquery-validation-unobtrusive\" />
+    <Folder Include="wwwroot\lib\jquery-validation\" />
+    <Folder Include="wwwroot\lib\jquery-validation\dist\" />
+    <Folder Include="wwwroot\lib\jquery\" />
+    <Folder Include="wwwroot\lib\jquery\dist\" />
+    <Folder Include="wwwroot\NewFolder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Shared\_Header.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Shared\_Footer.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\_Header.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\_LayoutCssPartial.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\_LayoutJsPartial.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\_UserMenu.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Shared\_Footer.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Shared\Error.cshtml" />
+    <None Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <None Include="Areas\Admin\Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Areas\Admin\Views\_ViewImports.cshtml" />
+    <None Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <None Include="Areas\User\Views\Dashboard\Index.cshtml" />
+    <None Include="Areas\User\Views\Order\Details.cshtml" />
+    <None Include="Areas\User\Views\Order\Index.cshtml" />
+    <None Include="Areas\User\Views\Shared\Error.cshtml" />
+    <None Include="Areas\User\Views\Shared\_Layout.cshtml" />
+    <None Include="Areas\User\Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Views\Account\Login.cshtml" />
+    <None Include="Views\Account\LogOutComplete.cshtml" />
+    <None Include="Views\Account\SignUp.cshtml" />
+    <None Include="Views\Account\Unauthorize.cshtml" />
+    <None Include="Views\Cart\CheckOut.cshtml" />
+    <None Include="Views\Cart\Index.cshtml" />
+    <None Include="Views\Payment\Index.cshtml" />
+    <None Include="Views\Payment\Receipt.cshtml" />
+    <None Include="wwwroot\Assets\items\7up.webp" />
+    <None Include="wwwroot\Assets\items\butter_scotch.webp" />
+    <None Include="wwwroot\Assets\items\cheese_n_corn.webp" />
+    <None Include="wwwroot\Assets\items\choco_lava.webp" />
+    <None Include="wwwroot\Assets\items\mirinda.webp" />
+    <None Include="wwwroot\Assets\items\nonveg_supreme.webp" />
+    <None Include="wwwroot\Assets\items\noveg_delight.webp" />
+    <None Include="wwwroot\Assets\items\pepsi.webp" />
+    <None Include="wwwroot\Assets\items\red_cake.webp" />
+    <None Include="wwwroot\Assets\items\veggie_pizza.webp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Shared\_UserMenu.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Shared\_LayoutJsPartial.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Shared\_LayoutCssPartial.cshtml" />
+  </ItemGroup>
+
+</Project>

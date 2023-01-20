@@ -1,0 +1,50 @@
+﻿@model ePizza.Entities.Dtos.ProductListDto
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>
+    Product List <span class="float-right"><a asp-action="Create" class="btn btn-outline-primary">Create New</a></span>
+</h1>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="articlesTable" width="100%" cellspacing="0">
+
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Unit Price</th>
+                    <th>
+                        Image
+                    </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var product in Model.Products)
+            {
+                <tr name="@product.Id">
+
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                    <td>@product.Description<td>
+                    <td>@product.UnitPrice</td>
+                    <td>
+                        <img src="@product.ImageUrl" class="w-75" />
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-sm btn-update" data-id="@product.Id" asp-area="Admin" asp-controller="Product" asp-action="Update" asp-route-articleId="@product.Id"><span class="fas fa-edit"></span></a>
+                        <button class="btn btn-danger btn-sm btn-delete" data-id="@product.Id"><span class="fas fa-minus-circle"></span></button>
+                    </td>
+                </tr>
+
+            }
+
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
