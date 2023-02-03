@@ -5,7 +5,7 @@ using ePizza.WebUI.Helpers;
 using ePizza.WebUI.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ePizzaHub.WebUI.Areas.User.Controllers
+namespace ePizza.WebUI.Areas.User.Controllers
 {
     [CustomAuthorize(Roles = "User")]
     [Area("User")]

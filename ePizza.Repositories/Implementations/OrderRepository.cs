@@ -26,9 +26,16 @@ namespace ePizza.Repositories.Implementations
         }
         public IEnumerable<Order> GetUserOrders(int UserId)
         {
-            return _ePizzaContext.Orders
-               .Include(o => o.OrderItems)
-               .Where(x => x.UserId == UserId).ToList();
+            var resultList = _ePizzaContext.Orders
+                 .Include(o => o.OrderItems)
+                 .Where(x => x.UserId == UserId).ToList();
+            if (resultList != null)
+            {
+                return resultList;
+            }
+
+            return null;
+
         }
 
         public OrderModel GetOrderDetails(string orderId)
@@ -41,19 +48,19 @@ namespace ePizza.Repositories.Implementations
                              UserId = order.UserId,
                              CreatedDate = order.CreatedDate,
                              Products = (from orderItem in _ePizzaContext.OrderItems
-                                      join product in _ePizzaContext.Products
-                                      on orderItem.ProductId equals product.Id
-                                      where orderItem.OrderId == orderId
-                                      select new ProductModel()
-                                      {
-                                          Id = orderItem.Id,
-                                          Name = product.Name,
-                                          Description = product.Description,
-                                          ImageUrl = product.ImageUrl,
-                                          Quantity = orderItem.Quantity,
-                                          ProductId = product.Id,
-                                          UnitPrice = orderItem.UnitPrice
-                                      }).ToList()
+                                         join product in _ePizzaContext.Products
+                                         on orderItem.ProductId equals product.Id
+                                         where orderItem.OrderId == orderId
+                                         select new ProductModel()
+                                         {
+                                             Id = orderItem.Id,
+                                             Name = product.Name,
+                                             Description = product.Description,
+                                             ImageUrl = product.ImageUrl,
+                                             Quantity = orderItem.Quantity,
+                                             ProductId = product.Id,
+                                             UnitPrice = orderItem.UnitPrice
+                                         }).ToList()
                          }).FirstOrDefault();
             return model;
         }

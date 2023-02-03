@@ -1,7 +1,7 @@
 ﻿using ePizza.WebUI.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ePizza.WebUI.Area.Admin.Controllers
+namespace ePizza.WebUI.Areas.Admin.Controllers
 {
     [CustomAuthorize(Roles = "Admin")]
     [Area("Admin")]

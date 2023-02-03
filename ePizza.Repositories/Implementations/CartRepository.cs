@@ -11,34 +11,50 @@ namespace ePizza.Repositories.Implementations
 {
     public class CartRepository:Repository<Cart>,ICartRepository
     {
-        private ePizzaContext _ePizzaContext
+        private ePizzaContext ePizzaContext
         {
             get
             {
-                return _ePizzaContext as ePizzaContext;
+                return _context as ePizzaContext;
             }
-        } 
+        }
+
         public CartRepository(DbContext context) : base(context)
         {
         }
 
-        public Cart GetCart(Guid CartId)
+        public Cart GetCart(Guid cartId)
         {
-            return _ePizzaContext.Carts.Include("Products")
-                .FirstOrDefault(x => x.Id == CartId && x.IsActive == true);
+            try
+            {
+                var x = cartId;
+                
+                var result = ePizzaContext.Carts.Include("Products")
+                    .Where(x => x.Id ==cartId && x.IsActive == true).FirstOrDefault();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+
+                return null;
+            }
+   
+        
         }
+          
 
         public CartModel GetCartDetails(Guid CartId)
         {
-            var model = (from cart in _ePizzaContext.Carts
+            var model = (from cart in ePizzaContext.Carts
                 where cart.Id == CartId && cart.IsActive == true
                 select new CartModel
                 {
                     Id = cart.Id,
                     UserId = cart.UserId,
                     CreatedDate = cart.CreatedDate,
-                    Products = (from cartItem in _ePizzaContext.CartItems
-                        join item in _ePizzaContext.Products
+                    Products = (from cartItem in ePizzaContext.CartItems
+                        join item in ePizzaContext.Products
                             on cartItem.ProductId equals item.Id
                         where cartItem.CartId == CartId
                         select new ProductModel()
@@ -57,11 +73,11 @@ namespace ePizza.Repositories.Implementations
 
         public int DeleteItem(Guid cartId, int itemId)
         {
-            var item = _ePizzaContext.CartItems.FirstOrDefault(ci => ci.CartId == cartId && ci.Id == itemId);
+            var item = ePizzaContext.CartItems.FirstOrDefault(ci => ci.CartId == cartId && ci.Id == itemId);
             if (item != null)
             {
-                _ePizzaContext.CartItems.Remove(item);
-                return _ePizzaContext.SaveChanges();
+                ePizzaContext.CartItems.Remove(item);
+                return ePizzaContext.SaveChanges();
             }
             else
             {
@@ -75,21 +91,21 @@ namespace ePizza.Repositories.Implementations
             var cart = GetCart(cartId);
             if (cart != null)
             {
-                for (int i = 0; i < cart.CartItems.Count; i++)
+                for (int i = 0; i < cart.Products.Count; i++)
                 {
-                    if (cart.CartItems[i].Id == itemId)
+                    if (cart.Products[i].Id == itemId)
                     {
                         flag = true;
                         //for minus quantity
-                        if (Quantity < 0 && cart.CartItems[i].Quantity > 1)
-                            cart.CartItems[i].Quantity += (Quantity);
+                        if (Quantity < 0 && cart.Products[i].Quantity > 1)
+                            cart.Products[i].Quantity += (Quantity);
                         else if (Quantity > 0)
-                            cart.CartItems[i].Quantity += (Quantity);
+                            cart.Products[i].Quantity += (Quantity);
                         break;
                     }
                 }
                 if (flag)
-                    return _ePizzaContext.SaveChanges();
+                    return ePizzaContext.SaveChanges();
             }
             return 0;
         }
@@ -98,7 +114,7 @@ namespace ePizza.Repositories.Implementations
         {
             Cart cart = GetCart(cartId);
             cart.UserId = userId;
-            return _ePizzaContext.SaveChanges();
+            return ePizzaContext.SaveChanges();
         }
 
       

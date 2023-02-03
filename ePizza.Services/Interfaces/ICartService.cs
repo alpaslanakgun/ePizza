@@ -13,7 +13,7 @@ namespace ePizza.Services.Interfaces
         
             int GetCartCount(Guid cartId);
             CartModel GetCartDetails(Guid cartId);
-            Cart AddItem(int UserId, Guid CartId, int ItemId, decimal UnitPrice, int Quantity);
+            Cart AddItem(int userId, Guid cartId, int productId, decimal unitPrice, int quantity);
             int DeleteItem(Guid cartId, int ItemId);
             int UpdateQuantity(Guid cartId, int id, int quantity);
             int UpdateCart(Guid CartId, int UserId);

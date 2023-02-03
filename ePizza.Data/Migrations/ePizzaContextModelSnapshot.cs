@@ -362,14 +362,14 @@ namespace ePizza.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "fa69341e-86df-4f8c-8930-bd2e43b07330",
+                            ConcurrencyStamp = "c0aaee90-0077-4d1e-bfff-84e7e7058302",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "798d2818-355a-4808-91ee-b044d405e1cf",
+                            ConcurrencyStamp = "1ba7390d-4c6b-4597-8c15-d2bc6bb8e74c",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -553,7 +553,7 @@ namespace ePizza.Data.Migrations
             modelBuilder.Entity("ePizza.Entities.Concrete.CartItem", b =>
                 {
                     b.HasOne("ePizza.Entities.Concrete.Cart", "Cart")
-                        .WithMany("CartItems")
+                        .WithMany("Products")
                         .HasForeignKey("CartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -642,7 +642,7 @@ namespace ePizza.Data.Migrations
 
             modelBuilder.Entity("ePizza.Entities.Concrete.Cart", b =>
                 {
-                    b.Navigation("CartItems");
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("ePizza.Entities.Concrete.Category", b =>

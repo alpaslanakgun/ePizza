@@ -11,7 +11,7 @@ namespace ePizza.Repositories.Interfaces
     public interface ICartRepository:IRepository<Cart>
     {
 
-        Cart GetCart(Guid CartId);
+        Cart GetCart(Guid cartId);
 
         CartModel GetCartDetails(Guid CartId);
         int DeleteItem(Guid cartId, int itemId);

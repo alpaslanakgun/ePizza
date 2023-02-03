@@ -10,7 +10,7 @@ using ePizza.Shared.Utilities.Results.ComplexType;
 using ePizza.WebUI.Helpers.Interfaces;
 using ePizza.WebUI.Models;
 
-namespace ePizza.WebUI.Area.Admin.Controllers
+namespace ePizza.WebUI.Areas.Admin.Controllers
 {
     public class ProductController : BaseController
     {

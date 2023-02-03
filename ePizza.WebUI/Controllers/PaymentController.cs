@@ -98,7 +98,7 @@ namespace ePizza.WebUI.Controllers
                         }
                         else
                         {
-                            ViewBag.Message = "Although, due to some technical issues it's not get updated in our side. We will contact you soon..";
+                            ViewBag.Message = "Odeme alınırken bir hata olustu Yakında sizinle iletişime geçecegiz.";
                         }
                     }
                 }
@@ -107,7 +107,7 @@ namespace ePizza.WebUI.Controllers
             {
 
             }
-            ViewBag.Message = "Your payment has been failed. You can contact us at support@epizza.com.";
+            ViewBag.Message = "Ödemeniz başarısız oldu support@epizza.com ile iletişime geçiniz.";
             return View();
         }
 

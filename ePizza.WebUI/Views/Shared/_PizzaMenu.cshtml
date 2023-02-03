@@ -1,20 +1,21 @@
-﻿<div class="container pb-4">
+﻿@model ePizza.Entities.Dtos.ProductListDto
+<div class="container pb-4">
     <div class="row pt-4">
-        <h2 class="col-sm-12 mb-4" id="heading">Pizza, Dessert, Beverages</h2>
+        <h2 class="col-sm-12 mb-4" id="heading">Pizza, Tatlılar, İçecekler</h2>
     </div>
     <div class="row">
-        @foreach (var item in Model)
+        @foreach (var product in Model.Products)
         {
             <div class="col-sm-4 pb-4">
                 <div class="card box-shadow">
-                    <img class="card-img-top" src="@item.ImageUrl" alt="image" style="width:100%">
+                    <img class="card-img-top" src="@product.ImageUrl" alt="image" style="width:100%">
                     <div class="card-body">
-                        <h4 class="card-title">@item.Name <span class="float-right font-20">₹@item.UnitPrice.ToString("##.#")</span></h4>
-                        <p class="card-text">@item.Description</p>
+                        <h4 class="card-title">@product.Name <span class="float-right font-20">@product.UnitPrice.ToString(" ₺")</span></h4>
+                        <p class="card-text">@product.Description</p>
                         <p>
                             <span class="pt-1 d-inline-block"> Size: Regular</span>
                             <span class="float-right font-20">
-                                <a href="javascript:void(0)" onclick="AddToCart('@item.Id','@item.Name','@item.UnitPrice',1)" class="btn btn-outline-primary">Add To Cart</a>
+                                <a href="javascript:void(0)" onclick="AddToCart('@product.Id','@product.Name','@product.UnitPrice',1)" class="btn btn-outline-primary">Sepete Ekle</a>
                             </span>
                         </p>
                     </div>

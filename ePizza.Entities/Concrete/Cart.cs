@@ -10,14 +10,14 @@ namespace ePizza.Entities.Concrete
     {
         public Cart()
         {
-            CartItems = new List<CartItem>();
+            Products = new List<CartItem>();
             CreatedDate = DateTime.Now;
             IsActive = true;
         }
         public Guid Id { get; set; }
         public int UserId { get; set; }
         public DateTime CreatedDate { get; set; }
-        public virtual List<CartItem> CartItems { get; private set; }
+        public virtual List<CartItem> Products { get; private set; }
 
         public bool IsActive { get; set; }
     }

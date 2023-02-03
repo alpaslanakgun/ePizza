@@ -21,7 +21,7 @@ namespace ePizza.Services.Implementations
             _cartItem = cartItem;
         }
 
-        public Cart AddItem(int UserId, Guid CartId, int ItemId, decimal UnitPrice, int Quantity)
+        public Cart AddItem(int UserId, Guid CartId, int productId, decimal UnitPrice, int Quantity)
         {
             try
             {
@@ -29,13 +29,13 @@ namespace ePizza.Services.Implementations
                 if (cart == null)
                 {
                     cart = new Cart();
-                    CartItem item = new CartItem(ItemId, Quantity, UnitPrice);
+                    CartItem item = new CartItem(productId, Quantity, UnitPrice);
                     cart.Id = CartId;
                     cart.UserId = UserId;
                     cart.CreatedDate = DateTime.Now;
 
                     item.CartId = cart.Id;
-                    cart.CartItems.Add(item);
+                    cart.Products.Add(item);
                     _cartRepo.AddAsync(cart);
                     _cartRepo.SaveAsync();
                 }
@@ -43,21 +43,21 @@ namespace ePizza.Services.Implementations
                 {
                 
 
-                    CartItem item = cart.CartItems.FirstOrDefault(p => p.ProductId == ItemId);
+                    CartItem product = cart.Products.FirstOrDefault(p => p.ProductId == productId);
 
-                    if (item != null)
+                    if (product != null)
                     {
-                        item.Quantity += Quantity;
-                        _cartItem.UpdateAsync(item);
+                        product.Quantity += Quantity;
+                        _cartItem.UpdateAsync(product);
                         _cartItem.SaveAsync();
                     }
                     else
                     {
-                        item = new CartItem(ItemId, Quantity, UnitPrice);
-                        item.CartId = cart.Id;
-                        cart.CartItems.Add(item);
+                        product = new CartItem(productId, Quantity, UnitPrice);
+                        product.CartId = cart.Id;
+                        cart.Products.Add(product);
 
-                        _cartItem.UpdateAsync(item);
+                        _cartItem.UpdateAsync(product);
                         _cartItem.SaveAsync();
                     }
                 }
@@ -77,7 +77,7 @@ namespace ePizza.Services.Implementations
         public int GetCartCount(Guid cartId)
         {
             var cart = _cartRepo.GetCart(cartId);
-            return cart != null ? cart.CartItems.Count() : 0;
+            return cart != null ? cart.Products.Count() : 0;
         }
 
         public  CartModel GetCartDetails(Guid cartId)

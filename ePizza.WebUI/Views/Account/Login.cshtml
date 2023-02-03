@@ -3,6 +3,12 @@
 @{
     ViewData["Title"] = "Login";
 }
+@if (!string.IsNullOrWhiteSpace(ViewBag.Error))
+{
+    <div class="text-danger">
+        <p>@ViewBag.Error</p>
+    </div>    
+}
 
 <h1>Login</h1>
 <hr />

@@ -34,15 +34,29 @@ namespace ePizza.WebUI.Controllers
 
                     if (user.Roles.Contains("Admin"))
                     {
-                        return RedirectToAction("Index", "Dashboard", new { area = "" });
+                        return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+                        //return RedirectToAction("Index", "Dashboard","Admin/Index");
                     }
                     else if (user.Roles.Contains("User"))
                     {
-                        return RedirectToAction("Index", "Dashboard","Admin/User");
+                        return RedirectToAction("Index", "Dashboard", new { area = "User" });
+
+                        /*return RedirectToAction("Index", "Dashboard","Admin/User");*/
                     }
                 }
+                else
+                {
+                    ModelState.AddModelError("", "Eposta Adresiniz veya Şifreniz Yanlış");
+                    ViewBag.Error = "Eposta Adresiniz veya Şifreniz Yanlış";
+                    return View("Login");
+                }
             }
-            return View();
+            else
+            {
+                ModelState.AddModelError("", "Eposta Adresiniz veya Şifreniz Yanlış");
+
+            }
+            return View("Login");
         }
         [HttpGet]
         public IActionResult SignUp()

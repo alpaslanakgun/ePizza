@@ -1,15 +1,18 @@
-﻿function AddToCart(ItemId, Name, UnitPrice, Quantity) {
+﻿function AddToCart(productId, Name, unitPrice, quantity) {
+
     $.ajax({
+      
         type: "GET",
         contentType: "application/json; charset=utf-8",
-        url: '/Cart/AddToCart/' + ItemId + "/" + UnitPrice + "/" + Quantity,
+        url: '/Cart/AddToCart/' + productId + "/" + unitPrice + "/" + quantity,
         success: function (d) {
+            debugger;
             var data = JSON.parse(d);
-            if (data.Items.length > 0) {
-                $('.noti_Counter').text(data.Items.length);
+            if (data.Products.length > 0) {
+                $('.noti_Counter').text(data.Products.length);
 
-                var message = '<strong>' + Name + '</strong> Added to <a href="/cart">Cart</a> Successfully!'
-                $('#toastCart > .toast-body').html(message)
+                var message = '<strong>' + Name + '</strong> Added to <a href="/cart">Cart</a> Successfully!';
+                $('#toastCart > .toast-body').html(message);
                 $('#toastCart').toast('show');
                 setTimeout(function () {
                     $('#toastCart').toast('hide');
@@ -54,6 +57,7 @@ function updateQuantity(id, quantity) {
 }
 
 $(document).ready(function () {
+    debugger;
     var cookie = $.cookie('CId');
     if (cookie) {
         $.ajax({

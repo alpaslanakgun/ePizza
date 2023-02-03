@@ -13,7 +13,7 @@ namespace ePizza.Repositories.Implementations
     {
 
 
-        protected readonly DbContext _context;
+        protected  DbContext _context;
 
         public Repository(DbContext context)
         {

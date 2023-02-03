@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ePizza.Data.Migrations
 {
-    public partial class FirstMig : Migration
+    public partial class InialCatalog : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -334,8 +334,8 @@ namespace ePizza.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Description", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "fa69341e-86df-4f8c-8930-bd2e43b07330", null, "Admin", "ADMIN" },
-                    { 2, "798d2818-355a-4808-91ee-b044d405e1cf", null, "User", "USER" }
+                    { 1, "c0aaee90-0077-4d1e-bfff-84e7e7058302", null, "Admin", "ADMIN" },
+                    { 2, "1ba7390d-4c6b-4597-8c15-d2bc6bb8e74c", null, "User", "USER" }
                 });
 
             migrationBuilder.InsertData(

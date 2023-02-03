@@ -11,7 +11,7 @@
             <div class="col-lg-8">
                 <div class="card mb-3">
                     <div class="col-sm-12">
-                        <h5 class="mt-3">Order Details <span class="float-right"> Item(s): @Model.Cart.Products.Count()</span></h5>
+                        <h5 class="mt-3">Sipariş Detayı <span class="float-right"> Ürünler (s): @Model.Cart.Products.Count()</span></h5>
                     </div>
                     <hr />
                     <div class="card-body pt-0 pb-0">
@@ -30,7 +30,7 @@
                                             <h5>@item.Name</h5>
                                             <p class="mb-2 text-muted small">Size: Regular</p>
                                             <p class="mb-2 text-muted small">
-                                                Unit Price: ₹@item.UnitPrice.ToString("##.#")
+                                                Unit Price: @item.UnitPrice.ToString("##.#")
                                             </p>
                                         </div>
                                         <div>
@@ -40,7 +40,7 @@
                                                 </div>
                                             </div>
                                             <span id="spanTotal" class="form-text text-muted text-center">
-                                                Total : ₹@((item.UnitPrice * @item.Quantity).ToString("##.#"))
+                                                Total : @((item.UnitPrice * @item.Quantity).ToString("##.#"))
                                             </span>
                                         </div>
                                     </div>
@@ -53,31 +53,32 @@
                         }
                     </div>
                     <div class="col-sm-12">
-                        <h5 class="mt-2">Delivery Address</h5>
+                        <h5 class="mt-2">Sipariş  Adresi</h5>
                     </div>
                     <hr />
                     <div class="card-body pb-0">
                         <dl class="row">
                             <dt class="col-sm-2">
-                                Street
+                                
+                                Sokak
                             </dt>
                             <dd class="col-sm-4">
                                 @address.Street
                             </dd>
                             <dt class="col-sm-2">
-                                Locality
+                                Semt
                             </dt>
                             <dd class="col-sm-4">
                                 @address.Locality
                             </dd>
                             <dt class="col-sm-2">
-                                Zip Code
+                               Posta Kodu
                             </dt>
                             <dd class="col-sm-4">
                                 @address.ZipCode
                             </dd>
                             <dt class="col-sm-2">
-                                Contact No.
+                                İletişim No.
                             </dt>
                             <dd class="col-sm-4">
                                 @address.PhoneNumber
@@ -89,22 +90,24 @@
             <div class="col-lg-4">
                 <div class="card mb-3">
                     <div class="col-sm-12">
-                        <h5 class="mt-3">Order Summary</h5>
+                        <h5 class="mt-3">Sipariş Özeti</h5>
                     </div>
                     <hr />
                     <div class="card-body pt-0">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
-                                Amount
-                                <span>₹@Model.Cart.Total</span>
+                                
+                                Fiyat
+                                <span>@Model.Cart.Total ₺</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0">
-                                Tax (5%)
-                                <span>+₹@Model.Cart.Tax</span>
+                                
+                                Vergi (5%)
+                                <span>+@Model.Cart.Tax ₺</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center  px-0 mb-3">
-                                <strong>Total Amount</strong>
-                                <span><strong>₹@Model.Cart.GrandTotal</strong></span>
+                                <strong>Total Fiyat</strong>
+                                <span><strong> @Model.Cart.GrandTotal ₺</strong></span>
                             </li>
                         </ul>
                         @if (CurrentUser != null)
@@ -120,7 +123,7 @@
                                 @Html.Hidden("rzp_orderid")
                                 <button type="submit" id="rzp-paymentresponse" hidden style="display: none;">Submit</button>
                             }
-                            <a href="#" class="btn btn-primary btn-block" onclick="submitToPayment()">Pay Now</a>
+                            <a href="#" class="btn btn-primary btn-block" onclick="submitToPayment()">Şimdi Öde</a>
                         }
                     </div>
                 </div>

@@ -1,23 +1,19 @@
-﻿using ePizza.Entities;
+﻿using System;
+using System.Text.Json;
+using ePizza.Entities.Concrete;
 using ePizza.Repositories.Models;
 using ePizza.Services.Interfaces;
 using ePizza.WebUI.Helpers;
 using ePizza.WebUI.Interfaces;
-using Microsoft.AspNetCore.Identity;
+using ePizzaHub.WebUI.Controllers;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
-using ePizza.Entities.Concrete;
 
-namespace ePizzaHub.WebUI.Controllers
+namespace ePizza.WebUI.Controllers
 {
     public class CartController : BaseController
     {
-        ICartService _cartService;
-        Guid CartId
+        readonly ICartService _cartService;
+        Guid cartId
         {
             get
             {
@@ -26,7 +22,8 @@ namespace ePizzaHub.WebUI.Controllers
                 if (string.IsNullOrEmpty(CId))
                 {
                     Id = Guid.NewGuid();
-                    Response.Cookies.Append("CId", Id.ToString());
+                    string guidType = Id.ToString();
+                    Response.Cookies.Append("CId", guidType);
                 }
                 else
                 {
@@ -41,7 +38,7 @@ namespace ePizzaHub.WebUI.Controllers
         }
         public IActionResult Index()
         {
-            CartModel cart = _cartService.GetCartDetails(CartId);
+            CartModel cart = _cartService.GetCartDetails(cartId);
             if (CurrentUser != null && cart != null)
             {
                 TempData.Set("Cart", cart);
@@ -50,14 +47,16 @@ namespace ePizzaHub.WebUI.Controllers
             return View(cart);
         }
 
-        [Route("Cart/AddToCart/{ItemId}/{UnitPrice}/{Quantity}")]
-        public IActionResult AddToCart(int ItemId, decimal UnitPrice, int Quantity)
+        [Route("Cart/AddToCart/{productId}/{unitPrice}/{quantity}")]
+        public IActionResult AddToCart(int productId, decimal unitPrice, int quantity)
         {
-            int UserId = CurrentUser != null ? CurrentUser.Id : 0;
 
-            if (ItemId > 0 && Quantity > 0)
+            int userId = CurrentUser != null ? CurrentUser.Id : 0;
+
+            if (productId > 0 && quantity > 0)
             {
-                Cart cart = _cartService.AddItem(UserId, CartId, ItemId, UnitPrice, Quantity);
+                var x = cartId;
+                Cart cart = _cartService.AddItem(userId, cartId, productId, unitPrice, quantity);
                 var data = JsonSerializer.Serialize(cart);
                 return Json(data);
             }
@@ -69,20 +68,20 @@ namespace ePizzaHub.WebUI.Controllers
 
         public IActionResult DeleteItem(int Id)
         {
-            int count = _cartService.DeleteItem(CartId, Id);
+            int count = _cartService.DeleteItem(cartId, Id);
             return Json(count);
         }
 
         [Route("Cart/UpdateQuantity/{Id}/{Quantity}")]
         public IActionResult UpdateQuantity(int Id, int Quantity)
         {
-            int count = _cartService.UpdateQuantity(CartId, Id, Quantity);
+            int count = _cartService.UpdateQuantity(cartId, Id, Quantity);
             return Json(count);
         }
 
         public IActionResult GetCartCount()
         {
-            int count = _cartService.GetCartCount(CartId);
+            int count = _cartService.GetCartCount(cartId);
             return Json(count);
         }
 

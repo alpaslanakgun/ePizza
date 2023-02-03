@@ -14,10 +14,10 @@ namespace ePizza.Services.Implementations
 {
     public class CategoryManager:ICategoryService
     {
-        private ICategoryRepository _categoryRepository;
-        public CategoryManager(ICategoryRepository _categoryRepository)
+        private readonly ICategoryRepository _categoryRepository;
+        public CategoryManager(ICategoryRepository categoryRepository)
         {
-            _categoryRepository = _categoryRepository;
+            _categoryRepository = categoryRepository;
         }
         public async Task<IDataResult<CategoryListDto>> GetAllAsync()
         {

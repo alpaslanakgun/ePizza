@@ -3,9 +3,9 @@ using ePizza.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ePizza.WebUI.Area.Admin.Controllers
+namespace ePizza.WebUI.Areas.Admin.Controllers
 {
-    public class DashboardController : Controller
+    public class DashboardController : BaseController
     {
         IOrderService _orderService;
         public DashboardController(IOrderService orderService)
