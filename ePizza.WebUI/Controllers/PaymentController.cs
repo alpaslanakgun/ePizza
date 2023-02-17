@@ -71,7 +71,6 @@ namespace ePizza.WebUI.Controllers
                     {
                         CartModel cart = TempData.Get<CartModel>("Cart");
                         PaymentDetails model = new PaymentDetails();
-
                         model.CartId = cart.Id;
                         model.Total = cart.Total;
                         model.Tax = cart.Tax;
